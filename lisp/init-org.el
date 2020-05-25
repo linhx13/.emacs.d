@@ -266,6 +266,8 @@ prepended to the element after the #+HEADER: tag."
            :map org-mode-map
            (("C-c n i" . org-roam-insert)))))
 
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
 (provide 'init-org)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
