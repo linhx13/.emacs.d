@@ -267,6 +267,8 @@ prepended to the element after the #+HEADER: tag."
            (("C-c n i" . org-roam-insert)))))
 
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
+                              "xelatex -interaction nonstopmode %f"))
 
 (provide 'init-org)
 
