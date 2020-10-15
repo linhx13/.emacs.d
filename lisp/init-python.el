@@ -52,6 +52,8 @@
   ;; Live Coding in Python
   (use-package live-py-mode))
 
+(add-hook 'python-mode-hook 'yapf-mode)
+
 (provide 'init-python)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
