@@ -60,8 +60,8 @@
   (conda-env-initialize-interactive-shells)
   (conda-env-initialize-eshell)
   (setq conda-env-autoactivate-mode t)
-  (setq conda-anaconda-home (expand-file-name "~/miniconda2"))
-  (setq conda-env-home-directory (expand-file-name "~/miniconda2")))
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+  (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
 
 (provide 'init-python)
 
