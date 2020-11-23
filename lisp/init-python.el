@@ -54,6 +54,15 @@
 
 (add-hook 'python-mode-hook 'yapf-mode)
 
+(use-package conda
+  :ensure t
+  :init
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  (setq conda-env-autoactivate-mode t)
+  (setq conda-anaconda-home (expand-file-name "~/miniconda2"))
+  (setq conda-env-home-directory (expand-file-name "~/miniconda2")))
+
 (provide 'init-python)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
