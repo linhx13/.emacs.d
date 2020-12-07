@@ -52,7 +52,9 @@
   ;; Live Coding in Python
   (use-package live-py-mode))
 
-(add-hook 'python-mode-hook 'yapf-mode)
+;; (add-hook 'python-mode-hook 'yapf-mode)
+(setq blacken-line-length 79)
+(add-hook 'python-mode-hook 'blacken-mode)
 
 (use-package conda
   :ensure t
