@@ -270,6 +270,8 @@ prepended to the element after the #+HEADER: tag."
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
                               "xelatex -interaction nonstopmode %f"))
 
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3))
+
 (provide 'init-org)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
