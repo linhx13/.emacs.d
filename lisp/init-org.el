@@ -256,31 +256,49 @@ prepended to the element after the #+HEADER: tag."
            ("P" . org-pomodoro)))
 
   ;; LaTeX
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
+  (setq org-preview-latex-image-directory "~/ltximg/")
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.3))
   (setq org-latex-packages-alist
         '(("fontset=macnew,UTF8" "ctex" t)))
   (setq org-preview-latex-default-process 'dvisvgm)
-  ;; (setq org-preview-latex-process-alist
-  ;;       '(
-  ;;         (dvisvgm
-  ;;          :programs ("xelatex" "dvisvgm")
-  ;;          :description "xdv > svg"
-  ;;          :message "you need to install the programs: xelatex and dvisvgm."
-  ;;          :image-input-type "xdv"
-  ;;          :image-output-type "svg"
-  ;;          :image-size-adjust (1.7 . 1.5)
-  ;;          :latex-compiler ("xelatex --no-pdf -interaction nonstopmode -output-directory %o %f")
-  ;;          :image-converter ("dvisvgm %f -n -b min -c %S -o %O"))
-  ;;         (imagemagick
-  ;;          :programs ("latex" "convert")
-  ;;          :description "pdf > png"
-  ;;          :message "you need to install the programs: xelatex and imagemagick."
-  ;;          :image-input-type "pdf"
-  ;;          :image-output-type "png"
-  ;;          :image-size-adjust (1.0 . 1.0)
-  ;;          :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-  ;;          :image-converter
-  ;;          ("convert -density %D -trim -antialias %f -quality 100 %O"))))
+  (setq org-preview-latex-process-alist
+        '(
+          (dvisvgm
+           :programs ("xelatex" "dvisvgm")
+           :description "xdv > svg"
+           :message "you need to install the programs: xelatex and dvisvgm."
+           :image-input-type "xdv"
+           :image-output-type "svg"
+           :image-size-adjust (1.7 . 1.5)
+           :latex-compiler ("xelatex --no-pdf -interaction nonstopmode -output-directory %o %f")
+           :image-converter ("dvisvgm %f -n -b min -c %S -o %O"))
+          (imagemagick
+           :programs ("latex" "convert")
+           :description "pdf > png"
+           :message "you need to install the programs: xelatex and imagemagick."
+           :image-input-type "pdf"
+           :image-output-type "png"
+           :image-size-adjust (1.0 . 1.0)
+           :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
+           :image-converter
+           ("convert -density %D -trim -antialias %f -quality 100 %O"))))
+
+  ;; Download images
+  (use-package org-download
+	:ensure t
+	;;将截屏功能绑定到快捷键：Ctrl + Shift + Y
+	:bind ("C-S-y" . org-download-screenshot)
+	:config
+    (setq org-download-screenshot-method "screencapture -i %s")
+    (setq org-download-annotate-function (lambda (_link) ""))
+    (setq-default org-download-image-dir "./images")
+    (setq-default org-download-heading-lvl nil)
+	;; Drag and drop to Dired
+	(add-hook 'dired-mode-hook 'org-download-enable)
+	)
+
+  (setq org-startup-with-inline-images t)
+  (setq org-image-actual-width '(700))
   )
 
 ;; org-roam
