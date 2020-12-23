@@ -287,11 +287,13 @@ prepended to the element after the #+HEADER: tag."
   (use-package org-download
 	:ensure t
 	;;将截屏功能绑定到快捷键：Ctrl + Shift + Y
-	:bind ("C-S-y" . org-download-screenshot)
+	:bind (:map org-mode-map
+           ("C-S-y" . org-download-yank)
+           ("C-S-i" . org-download-clipboard))
 	:config
     (setq org-download-screenshot-method "screencapture -i %s")
     (setq org-download-annotate-function (lambda (_link) ""))
-    (setq-default org-download-image-dir "./images")
+    (setq-default org-download-image-dir "./static")
     (setq-default org-download-heading-lvl nil)
 	;; Drag and drop to Dired
 	(add-hook 'dired-mode-hook 'org-download-enable)
